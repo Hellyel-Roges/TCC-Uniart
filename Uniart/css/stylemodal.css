@@ -1,0 +1,127 @@
+:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+.fade.modal-backdrop.show{
+ opacity: 0.2,5;
+}
+
+:focus,
+.focus-visible:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow:
+    0 0 0 .2rem #fff,
+    0 0 0 .35rem #069;
+}
+/*modal 3 pontos*/
+#pontos{
+display: flex;
+justify-content: right;
+}
+
+.bi-three-dots{
+width: 1.5rem;
+height: 1.5rem;
+}
+
+li {
+    list-style-type: none;
+}
+
+#publink{
+  width: 100%;
+  border-radius: 20px;
+  padding: 5px 10px;
+}
+
+input:focus{
+outline: none;
+box-shadow: none !important;
+}
+
+.opcao{
+  background-color: #A020F0;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.opcao:hover{
+  opacity: 0.6;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+
+
+/*modal perfil*/
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+    display: flex;
+  justify-content: center;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-picture2 {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-picture2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 24px;
+  margin: 0;
+}
+
+.username {
+  font-size: 18px;
+  color: #777;
+  margin: 10px 0;
+}
+
+.tagline{
+color: black;
+}
+
+.description {
+  color: #555;
+  margin: 10px 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #A020F0;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #A020F0;
+  text-decoration: none;
+  color: white;
+  opacity: 0.8;
+}

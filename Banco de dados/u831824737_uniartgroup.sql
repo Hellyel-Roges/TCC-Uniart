@@ -1,0 +1,498 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Tempo de geração: 08-Fev-2024 às 17:07
+-- Versão do servidor: 10.6.12-MariaDB-cll-lve
+-- versão do PHP: 7.2.34
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Banco de dados: `u831824737_uniartgroup`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categoria_arquivo`
+--
+
+CREATE TABLE `categoria_arquivo` (
+  `cd_categoria` int(11) NOT NULL,
+  `ds_categoria` varchar(100) DEFAULT NULL,
+  `id_tipo` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `categoria_arquivo`
+--
+
+INSERT INTO `categoria_arquivo` (`cd_categoria`, `ds_categoria`, `id_tipo`) VALUES
+(1, 'Animação', 1),
+(2, 'Clipe Musical', 1),
+(3, 'Processo Criativo Artistico', 1),
+(4, 'Cultura', 1),
+(5, 'Acappela', 2),
+(6, 'Instrumental', 2),
+(7, 'Genero Musical', 2),
+(8, 'Desenho', 3),
+(9, 'Fotografia', 3),
+(10, 'Pintura', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `categoria_eventos`
+--
+
+CREATE TABLE `categoria_eventos` (
+  `cd_categoria` int(11) NOT NULL,
+  `ds_categoria` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `categoria_eventos`
+--
+
+INSERT INTO `categoria_eventos` (`cd_categoria`, `ds_categoria`) VALUES
+(1, 'Eventos'),
+(2, 'Comunicado'),
+(3, 'Vestibulinho');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `comentario`
+--
+
+CREATE TABLE `comentario` (
+  `cd_comentario` int(11) NOT NULL,
+  `ds_comentario` varchar(200) DEFAULT NULL,
+  `dt_comentario` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `id_post` int(11) DEFAULT NULL,
+  `id_perfil` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `comentario`
+--
+
+INSERT INTO `comentario` (`cd_comentario`, `ds_comentario`, `dt_comentario`, `id_post`, `id_perfil`) VALUES
+(8, 'Top ', '2023-12-06 22:23:09', 21, 8),
+(9, 'Top ', '2023-12-06 22:23:11', 21, 8),
+(10, 'Top ', '2023-12-06 22:23:12', 21, 8),
+(11, 'Top ', '2023-12-06 22:23:13', 21, 8),
+(12, 'Top ', '2023-12-06 22:23:15', 21, 8),
+(13, 'Top ', '2023-12-06 22:23:15', 21, 8),
+(14, 'Top ', '2023-12-06 22:23:18', 21, 8),
+(15, 'Top ', '2023-12-06 22:23:21', 21, 8),
+(16, 'Top ', '2023-12-06 22:23:23', 21, 8),
+(17, 'Pq seu email se Chema José leite?', '2023-12-06 23:21:12', 36, 17),
+(18, 'Bem curioso', '2023-12-06 23:27:09', 41, 17),
+(19, 'Lind dms', '2023-12-06 23:28:03', 7, 17),
+(20, 'Fez duas vezes?', '2023-12-06 23:30:05', 47, 17),
+(21, 'nem a foda', '2023-12-07 00:34:53', 56, 14),
+(24, 'parece eu', '2023-12-07 03:09:35', 7, 6),
+(25, 'Esse aí fico top emmm', '2023-12-07 03:17:45', 46, 9),
+(27, 'Gatos e gatas ', '2023-12-07 15:32:35', 77, 9),
+(28, 'Obrigado pela parceria uniart', '2023-12-07 17:16:51', 69, 107580),
+(29, 'Simplesmente Serjão foguetes🚀 ', '2023-12-07 22:20:56', 78, 166007),
+(30, 'Coments por favor!!!😃', '2023-12-08 12:10:56', 81, 1),
+(31, 'Estou esperando você terminar o manga do seu personagem kkkkk', '2023-12-08 13:05:46', 83, 1),
+(32, 'feito por robô....', '2023-12-09 20:37:38', 81, 7),
+(34, 'mike!', '2023-12-09 20:38:04', 83, 7),
+(35, 'Bora alcançar nossos Sonhos e objetivos galeraaaaaaaa❤️', '2024-02-08 16:49:29', 92, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `cd_eventos` int(11) NOT NULL,
+  `ds_titulo` varchar(150) NOT NULL,
+  `ds_eventos` text NOT NULL,
+  `hr_eventos` time NOT NULL,
+  `dt_eventos` date NOT NULL,
+  `tp_eventos` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `st_local` varchar(150) NOT NULL,
+  `ds_arquivo` blob NOT NULL,
+  `id_categoria` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `eventos`
+--
+
+INSERT INTO `eventos` (`cd_eventos`, `ds_titulo`, `ds_eventos`, `hr_eventos`, `dt_eventos`, `tp_eventos`, `st_local`, `ds_arquivo`, `id_categoria`) VALUES
+(1, '24° Feira de TCC da Etec de Itanhaém', 'A 24º Feira de TCC da Etec de Itanhaém. Aberto ao público! ', '18:00:00', '2023-12-06', '2023-12-06 21:15:15', 'Av. José Batista Campos, 1431 - Cidade Anchieta, Itanhaém - SP, 11740-000', 0x56c3ad64656f20646f20576861747341707020646520323032332d31322d303620c3a02873292031382e31302e34325f38336530643332372e6d7034, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `nivel_acesso`
+--
+
+CREATE TABLE `nivel_acesso` (
+  `cd_nivel` int(11) NOT NULL,
+  `nm_nivel` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `nivel_acesso`
+--
+
+INSERT INTO `nivel_acesso` (`cd_nivel`, `nm_nivel`) VALUES
+(1, 'Usuário'),
+(2, 'Administrador');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `cd_perfil` int(11) NOT NULL,
+  `nm_perfil` varchar(100) NOT NULL,
+  `nr_cell` varchar(11) DEFAULT NULL,
+  `ds_email` varchar(60) NOT NULL,
+  `ds_login` varchar(50) NOT NULL,
+  `ds_senha` varchar(25) NOT NULL,
+  `ds_perfil` text DEFAULT NULL,
+  `ds_imagem` blob DEFAULT NULL,
+  `dt_nascimento` date DEFAULT NULL,
+  `dt_entrada` date DEFAULT NULL,
+  `ds_esqueceu` varchar(220) DEFAULT NULL,
+  `id_nivel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `perfil`
+--
+
+INSERT INTO `perfil` (`cd_perfil`, `nm_perfil`, `nr_cell`, `ds_email`, `ds_login`, `ds_senha`, `ds_perfil`, `ds_imagem`, `dt_nascimento`, `dt_entrada`, `ds_esqueceu`, `id_nivel`) VALUES
+(1, 'Hellyel Roges', '13997501700', 'hellyelroges@gmail.com', 'hellyelzin', 'Deus123', 'EU SOU LOUCO POR JESUS, DESDE QUE EU DESCOBRI QUE ELE ME AMOU PRIMEIRO', 0x436170747572612064652054656c61202831292e706e67, '2005-06-10', '2023-12-06', 'NULL', 2),
+(6, 'bots', NULL, 'bots@gmail.com', 'bot', '123', '', 0x62633564366438623432316135323265396164653439646635663163663665632e6a7067, '2005-04-20', '2023-12-06', NULL, 1),
+(7, 'Paulo', NULL, 'pakatsu007@gmail.com', 'paulo', 'katsuya007', 'Horizon é o melhor!', 0x726f6265727420312e706e67, '2005-11-01', '2023-12-06', NULL, 1),
+(8, 'Matheusxdd', NULL, 'matheusfelipepierre@gmail.com', 'Matheusxdd', '190505', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(9, 'Lufi_Freestyle', NULL, 'giovannetube@gmail.com', 'giovas', '123', 'Faço uns freestyle aí...\r\n@lufi_freestyle\r\n@proj_uniart', 0x53637265656e73686f745f32303233313230362d3134343034382d3636372e706e67, '2005-01-05', '2023-12-06', NULL, 1),
+(10, 'Polo', NULL, 'hellyelroges14@gmail.com', '1', '1', NULL, NULL, NULL, '2023-12-06', 'NULL', 1),
+(11, 'vicci', NULL, 'viniciosborges2018@gmail.com', 'viniciosborges2018@gmail.com', 'sbcs290958', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(12, 'JACQUELINE', NULL, 'correajacqueline4@gmail.com', 'Jacquezinha', 'vo324167', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(13, 'Levixx', NULL, 'deazevedobarbosalevi@gmail', 'Natylindar', 'natylindar', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(14, 'Flat', NULL, 'mateus.flat@outlook.com', 'flatx', '1234', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(15, 'Vitória ', NULL, 'layla-lindinha2000@hotmail.com', 'vitoria.passos.2014pl@gmail.com', '993792136', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(16, 'Laís ', NULL, 'hellyellais10@gmail.com', 'hellyellais10@gmail.com', 'hadassa', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(17, 'Rick', NULL, 'Emailverdadeiro@gmail.com', 'Rick2ika', '1234zeus', 'A very good tcc', 0x494d475f32303233303532365f3230343932383838315f4844522e6a7067, '1812-05-13', '2023-12-06', NULL, 1),
+(18, 'Laís linda', NULL, 'lais.passos.74ap@gmail.com', 'Lais', '123', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(19, 'Heiwity', NULL, 'jhonatas.hrsantos@gmail.com', 'Hei_', 'gunsnroses2023', NULL, NULL, NULL, '2023-12-06', 'NULL', 1),
+(20, 'Daiana', NULL, 'Etecdaiana@gmail.com', 'Daiana', '1234', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(21, 'José Guilherme ', NULL, 'jguilhermegleite@gmail.com', 'José G', '@shelbygt500', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(22, 'ray', NULL, 'rayssasouzafreitas12@gmail.com', '13 99716-8349 ', '12020107', NULL, NULL, NULL, '2023-12-06', '$2y$10$erIFLlN56PhN1G/.BKj8/.uLIN3UrBcaHGXWFRiXJvW3AlM4HrrlO', 1),
+(23, 'Danilo Silva ', NULL, 'dan.buchecha90@gmail.com', 'Danilo ', '1234', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(24, 'Heloisa ', NULL, 'alvesheloisa233@gmail.com', 'alvesheloisa233@gmail.com ', '08182331', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(25, 'Uziel', NULL, 'uzielmoraesdelima@gmail.com', 'Uzielm ', 'Ziel00', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(26, 'Charlene paixão diniz', NULL, 'e.ny.diniz@hotmail.com', 'Charlene ', 'alicinha', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(27, 'pedro', NULL, 'pedrohna506@gmail.com', 'pedro', '123', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(28, 'Rosil ', NULL, 'jr.bonne@gmail.com', 'Rosiljunior', '123456', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(29, 'xavluc', NULL, 'opardalanonimo@gmail.com', 'xavluc', 'Pardal*A1', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(30, 'Verinha', NULL, 'vera.xavier500@gmail.com', 'Verinha', '#vera', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(31, 'Olivia do grau', NULL, 'oli.zamp33@gmail.com', 'Olivinha matadora de onça ', 'olivioca', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(32, 'Beatriz ', NULL, 'ssilvabeaa@gmail.com', 'ssilvabeaa@gmail.com ', '@Slvbea04', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(33, 'milly', NULL, 'millyasen71@gmai.com', 'millyasen71@gmail.com', 'amopizza77', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(34, 'Brandon Henrique ', NULL, 'brandonhenrique902@gmail.com', 'Brandon21', 'etec123', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(35, 'guilherme82', NULL, 'rme82@hotmail.com', 'guilherme82', 'dead1234', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(36, 'muriloxavier', NULL, 'murilo.xavier.lucio@gmail.com', 'muriloxavier', 'teste1234', NULL, NULL, NULL, '2023-12-06', NULL, 1),
+(37, 'Coruja', NULL, 'gian.ceolin@gmail.com', 'GenerallPatas', 'GenerallPatas', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(38, 'gabcortezkkk', NULL, 'gabrielasen1224@gmail.com', 'gabcortezkkk ', 'baiel.gac', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(39, 'Thayy', NULL, 'thayyramos12@gmail.com', 'Thayy', 'Estrela2', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(40, 'AnaCaroline24', NULL, 'anacarolineetec@gmail.com', 'Anaa', 'senha2409', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(41, 'Fredson Lima ', NULL, 'fjkrlima@gmail.com', 'Fred ', 'fredka7176', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(42, 'MigsSkyy', NULL, 'migs.fag@gmail.com', 'SkyMigss', 'skyel0708', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(44, 'Felipe Lira ', NULL, 'lipeaniki2019@gmail.com', 'Lira', '241429', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(45, 'Dijanynni Kiratza ', NULL, 'dija.kiratza@hotmail.com', 'Dija123', 'dija123', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(46, 'Dijanynni', NULL, 'dijanynni.kiratza@gmail.com', 'Dijanynni fotografia', 'dija123', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(47, 'dudastw', NULL, 'mariasantosit18@gmail.com', 'mariasantosit18@gmail.com', 'mariait18', '', 0x34323741313944452d394545432d344631372d393944432d4343444630433737444445382e6a706567, NULL, '2023-12-07', NULL, 1),
+(48, '', NULL, '', 'teste123', 'teste123', '', NULL, NULL, '2023-12-07', NULL, 1),
+(107580, 'Jonatas Tomaz', '13400289221', 'oi@gmail.com', 'jonas', '123', 'futebol ', 0x494d472d32303233303532362d5741303031332e6a7067, '2005-06-17', '2023-12-07', NULL, 1),
+(114737, 'Augustãooo', NULL, 'bananarepublic@gmail.com', '123456', '123456', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(114738, 'Laris', NULL, 'larianchia@gmail.com', 'Laris', 'gigi', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(138438, 'Kaori ', NULL, 'luana.ikeue@gmail.com', 'Kaori ', '2211', NULL, NULL, NULL, '2023-12-07', NULL, 1),
+(166007, 'matrizz_tsx', NULL, 'henriqueluizsoarestop10@gmail.com', 'matrizz_tsx', 'sah_gysS2', 'Dev Junior que ama programar e quer aprender qualquer coisa sobre tecnologia. Mente aberta e amante do Javascript, Typescript e do Java.', 0x494d475f32303232313133305f3136353734345f3436392e6a7067, '2006-05-27', '2023-12-07', NULL, 1),
+(166008, 'Luan Felipe Menezes de Jesus Silva ', NULL, 'luanbemviver@gmail.com', 'Luan', 'luluca123', NULL, NULL, NULL, '2023-12-08', NULL, 1),
+(166009, 'Hackzinn_1999', '66666666666', 'lucas_luiz.dev@yahoo.com', 'saoeiiii', '123456654123', 'k', 0x72656d6f74652e706e67, '1920-10-01', '2023-12-18', NULL, 1),
+(166010, 'Well', NULL, 'charutouzuc@gmail.com', 'well', '123', NULL, NULL, NULL, '2023-12-21', NULL, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `post`
+--
+
+CREATE TABLE `post` (
+  `cd_post` int(11) NOT NULL,
+  `ds_post` varchar(200) DEFAULT NULL,
+  `dt_post` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `ds_arquivo` varchar(250) NOT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
+  `id_perfil` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `post`
+--
+
+INSERT INTO `post` (`cd_post`, `ds_post`, `dt_post`, `ds_arquivo`, `id_categoria`, `id_perfil`) VALUES
+(7, 'O nome dele é Costela! ', '2023-12-06 21:38:37', 'IMG-20231106-WA0008.jpg', 9, 7),
+(13, 'eu sou gay', '2023-12-07 11:21:48', 'images (8).jpeg', 10, 8),
+(17, 'Donatello é muito foda', '2023-12-06 22:17:43', '40598824-EB45-49B5-A8E4-C47067380B49.jpeg', 9, 13),
+(19, 'levi e legal', '2023-12-06 22:18:52', '152c86196f4b6e5e4a6b501fa542f2a5.png', 8, 11),
+(20, 'skskskskskks anime', '2023-12-07 11:25:28', 'FB_IMG_1700538204883.png', 8, 14),
+(21, ' Simplesmente obcecada por cerejeiras♡\r\n(O Desenho não é meu)', '2023-12-06 22:21:51', '6984089409cfa75cfd6c620e4c8e3877.jpg', 8, 12),
+(23, 'Feira de TCC', '2023-12-06 22:26:13', 'png_20231206_160924_0000.png', 9, 9),
+(25, 'Melhor que Monalisa ', '2023-12-06 22:31:30', 'IMG-20231205-WA0024.jpg', 10, 17),
+(26, 'Lindoa', '2023-12-06 22:32:23', '17019018801894398325631866485267.jpg', 9, 18),
+(27, 'Doritos', '2023-12-06 22:33:16', 'foto1.jpg', 9, 9),
+(28, 'A arte é a expressão do que sentimos e do que queremos sentir. \r\nArte é amor\r\nArte é expressão \r\nArte é saudade.\r\n*urso feito com as roupas da avó que se foi*', '2023-12-06 22:34:28', 'IMG-20231206-WA0004.jpg', 9, 15),
+(29, 'A arte é a expressão do que sentimos e do que queremos sentir. \r\nArte é amor\r\nArte é expressão \r\nArte é saudade.\r\n*urso feito com as roupas da avó que se foi*', '2023-12-06 22:34:30', 'IMG-20231206-WA0004.jpg', 9, 15),
+(30, '', '2023-12-06 22:35:42', 'IMG-20231206-WA0012.jpg', 9, 18),
+(32, 'Chama lá\r\n\r\n13981995536', '2023-12-06 22:41:41', '1701902399930.jpg', 9, 17),
+(33, 'Zé da manga ', '2023-12-06 22:44:41', 'Screenshot_20231206-194343.png', 9, 17),
+(34, 'Mais lindo de DSI', '2023-12-06 22:46:38', 'Screenshot_20231206-194552.png', 9, 17),
+(36, '', '2023-12-06 22:56:30', 'P_20231206_195438_vHDR_On_p_1.jpg', 9, 21),
+(37, 'Palmeiras Campeão!!! 🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆', '2023-12-06 23:03:35', '17019037310347273853220544386247.jpg', 9, 23),
+(38, 'Palmeiras Campeão!!! 🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆🏆', '2023-12-06 23:03:35', '17019037310347273853220544386247.jpg', 9, 23),
+(39, 'final de tarde ', '2023-12-06 23:04:52', '20231103_183124.jpg', 9, 24),
+(40, 'Zoiando pro nada', '2023-12-06 23:04:59', 'IMG_20230520_225257.jpg', 9, 25),
+(41, 'Tcc', '2023-12-06 23:21:48', '20231206_195222.jpg', 9, 26),
+(43, 'levi ', '2023-12-06 23:26:52', '152c86196f4b6e5e4a6b501fa542f2a5.png', 9, 27),
+(44, 'levi ', '2023-12-06 23:26:53', '152c86196f4b6e5e4a6b501fa542f2a5.png', 9, 27),
+(45, 'Praia Boca da Barra, Itanhaém.', '2023-12-06 23:27:47', 'IMG-20230303-WA0015.jpg', 9, 28),
+(46, 'Um viado elfo fantasmagórico que eu fiz um dia ai', '2023-12-06 23:28:35', 'IMG_20231203_203901_673.jpg', 8, 31),
+(47, 'Um viado elfo fantasmagórico que eu fiz um dia ai', '2023-12-06 23:28:36', 'IMG_20231203_203901_673.jpg', 8, 31),
+(48, '', '2023-12-06 23:34:19', 'images.png', 8, 32),
+(49, '', '2023-12-06 23:34:20', 'images.png', 8, 32),
+(50, 'Eu sou gayyyyyyyyyyy', '2023-12-07 11:56:33', 'capsule_616x353.jpg', 9, 14),
+(51, 'ouça gorillaz', '2023-12-06 23:44:11', 'GORILLAZ_LIVE_Presslow.jpg', 8, 33),
+(52, 'foda ', '2023-12-06 23:51:48', 'GORILLAZ_LIVE_Presslow.jpg', 10, 35),
+(54, 'Stonehenge', '2023-12-07 00:01:00', 'rgrovd2gmkjnbexburk5.jpg', 9, 36),
+(56, 'CASEMIRO PERDIDO NA ETEC', '2023-12-07 00:14:30', '20231206_211317.jpg', 9, 9),
+(57, '👋🏻', '2023-12-07 00:33:21', 'CCAC5208-BD01-4526-8D0A-D4FC86816828.jpeg', 9, 39),
+(58, '', '2023-12-07 00:33:27', 'IMG_20231204_170142785.jpg', 9, 40),
+(59, 'Apresentação das Patentes do projeto de TCC, CodeQ.', '2023-12-07 00:34:12', '20230911_104207_0000.png', 8, 38),
+(60, 'Apresentação das Patentes do projeto de TCC, CodeQ.', '2023-12-07 00:34:13', '20230911_104207_0000.png', 8, 38),
+(61, 'Observando o cachorro ', '2023-12-07 00:38:05', 'images (53).jpeg', 9, 41),
+(62, 'Observando o cachorro ', '2023-12-07 00:38:07', 'images (53).jpeg', 9, 41),
+(63, 'select * fotografia', '2023-12-07 00:42:12', 'rgrovd2gmkjnbexburk5.jpg', 9, 43),
+(64, 'select * fotografia', '2023-12-07 00:42:14', 'rgrovd2gmkjnbexburk5.jpg', 9, 43),
+(65, 'Tccccc', '2023-12-07 00:43:09', 'Screenshot_20231206-164419_WhatsApp.jpg', 9, 9),
+(66, 'O macaco pensador', '2023-12-07 00:44:58', 'IMG_20231206_214328_134.jpg', 9, 44),
+(67, 'Arte trap/rap capa de música, \r\nInstagram: @lufi_freestyle', '2023-12-07 03:03:10', 'DIG-CHAW-(COMPLETA1) PARENTAL_ADVERSORY.png', 8, 9),
+(68, 'TOPPPPP OURSMILE PARCERIA UNIART', '2023-12-07 03:03:25', 'IMG_4825.jpeg', 9, 47),
+(69, 'TOPPPPP OURSMILE PARCERIA UNIART', '2023-12-07 03:03:25', 'IMG_4825.jpeg', 9, 47),
+(70, 'Um sketch aiii, atualizando a rede social.\r\n#art #uniart #freestyle #tcc #desenho', '2023-12-07 03:06:31', 'IMG_20231010_224430523~2.jpg', 8, 9),
+(71, 'Grafite Samurai Reflexion\r\n.\r\n.\r\n#art #freestyle #draw #grafite #streetart #samurai #tokyo', '2023-12-07 03:09:49', 'IMG_20230618_220216_922.jpg', 8, 9),
+(72, 'Uma pintura encontrada de um rei há 10.000 anos atrás retrata um governante poderoso e imponente em seu trono.', '2023-12-07 03:16:18', '8bac54ef-5c70-4d1a-9a2e-eb6600f6c9df.jpg', 10, 6),
+(74, 'SP city \r\n\r\n#foto #photo #view', '2023-12-07 03:22:57', 'IMG_20230715_160403_609~2.jpg', 9, 9),
+(75, 'PARABÉNS TODOS DO 3° MIN.... Banana Republic...', '2023-12-07 09:54:35', 'marcelo-beny-bananinha-reproducao-instagram.jpg', 9, 114737),
+(76, 'Feliz natal', '2023-12-07 10:52:15', '573caf91d7478a323a5d3feb105b997c.jpg', 8, 138438),
+(77, 'Gatinho da faculdade ', '2023-12-07 11:17:08', 'IMG-20231207-WA0005.jpeg', 9, 114738),
+(78, '', '2023-12-07 13:37:37', 'images - 2023-11-23T203741.728.jpeg', 9, 48),
+(79, 'timaço ai', '2023-12-07 17:14:30', 'F5MviCaWEAALcO_.jpg', 9, 107580),
+(80, 'Edição simples e random da minha galeria.', '2023-12-07 22:17:02', '1696300463143.png', 8, 166007),
+(81, '', '2023-12-11 22:53:01', '_65d0694a-b593-4f8a-9356-709efb3dd142.jpeg', 8, 1),
+(83, 'Uma história/mangá que vem sido desenvolvida à tempos, Café da Roça o nome...☕\r\n\r\n#art #arte #draw #manga #lineart #adventure ', '2023-12-08 13:03:18', '1 Sem Título (1).jpg', 8, 9),
+(84, 'Bolt dormindo no tapete! ', '2023-12-09 20:41:39', '20230723_175044.jpg', 9, 7),
+(85, 'Ele é o Lion! ', '2023-12-09 20:43:19', '20230920_150431.jpg', 9, 7),
+(86, 'Last Breath. Uma música que fiz para representar o último suspiro dado, não necessariamente o fim da vida, mas o fim de uma fase, momento, sentimento.', '2023-12-09 20:47:48', 'Last Breath.wav', 6, 7),
+(87, 'Clock, uma música que fiz para representar o relógio e seu conceito. Vou deixar aberto a interpretações.', '2023-12-09 20:53:58', 'The Watcher.wav', 6, 7),
+(88, 'O nome da música é Stardust!', '2023-12-09 20:59:40', 'sc 12 - Big Rip.wav', 6, 7),
+(89, 'teste', '2023-12-15 17:34:57', 'Placa Boas Vindas!_20231122_201729_0000.png', 10, 1),
+(90, 'jogo bommmmm', '2023-12-18 17:58:44', 'WIN_20230130_00_03_35_Pro.jpg', 9, 1),
+(91, '', '2023-12-18 18:06:18', 'e.jpeg', 10, 166009),
+(92, 'Finalmente comecei minha faculdade de ciência da computação na Unisantos.\r\nSou ex-aluno da etec de Itanhaém. Fiz parte do último ETIM, e me formei em 2023😍🤓❤️', '2024-02-08 16:48:58', 'VID-20240206-WA0090.mp4', 3, 1),
+(93, 'Love in Air 🎆,\r\ninsta: @lufi_freestyle \r\n#art #love #draw #couple #lineart', '2024-02-08 16:56:33', 'arte rubens namoropretoebranco.jpg', 8, 9);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `tipo_arquivo`
+--
+
+CREATE TABLE `tipo_arquivo` (
+  `cd_tipo` int(11) NOT NULL,
+  `ds_tipo` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `tipo_arquivo`
+--
+
+INSERT INTO `tipo_arquivo` (`cd_tipo`, `ds_tipo`) VALUES
+(1, 'Vídeo'),
+(2, 'Áudio'),
+(3, 'Imagem');
+
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices para tabela `categoria_arquivo`
+--
+ALTER TABLE `categoria_arquivo`
+  ADD PRIMARY KEY (`cd_categoria`),
+  ADD KEY `fk_tp_cate` (`id_tipo`);
+
+--
+-- Índices para tabela `categoria_eventos`
+--
+ALTER TABLE `categoria_eventos`
+  ADD PRIMARY KEY (`cd_categoria`);
+
+--
+-- Índices para tabela `comentario`
+--
+ALTER TABLE `comentario`
+  ADD PRIMARY KEY (`cd_comentario`),
+  ADD KEY `fk_comp_per` (`id_perfil`),
+  ADD KEY `fk_comp_post` (`id_post`);
+
+--
+-- Índices para tabela `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`cd_eventos`),
+  ADD KEY `fk_eve_cate` (`id_categoria`);
+
+--
+-- Índices para tabela `nivel_acesso`
+--
+ALTER TABLE `nivel_acesso`
+  ADD PRIMARY KEY (`cd_nivel`);
+
+--
+-- Índices para tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`cd_perfil`),
+  ADD KEY `fk_per_niv` (`id_nivel`);
+
+--
+-- Índices para tabela `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`cd_post`),
+  ADD KEY `fk_post_per` (`id_perfil`),
+  ADD KEY `fk_post_cate` (`id_categoria`);
+
+--
+-- Índices para tabela `tipo_arquivo`
+--
+ALTER TABLE `tipo_arquivo`
+  ADD PRIMARY KEY (`cd_tipo`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `categoria_arquivo`
+--
+ALTER TABLE `categoria_arquivo`
+  MODIFY `cd_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de tabela `categoria_eventos`
+--
+ALTER TABLE `categoria_eventos`
+  MODIFY `cd_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `comentario`
+--
+ALTER TABLE `comentario`
+  MODIFY `cd_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT de tabela `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `cd_eventos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `nivel_acesso`
+--
+ALTER TABLE `nivel_acesso`
+  MODIFY `cd_nivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `perfil`
+--
+ALTER TABLE `perfil`
+  MODIFY `cd_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=166011;
+
+--
+-- AUTO_INCREMENT de tabela `post`
+--
+ALTER TABLE `post`
+  MODIFY `cd_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+
+--
+-- AUTO_INCREMENT de tabela `tipo_arquivo`
+--
+ALTER TABLE `tipo_arquivo`
+  MODIFY `cd_tipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `categoria_arquivo`
+--
+ALTER TABLE `categoria_arquivo`
+  ADD CONSTRAINT `fk_tp_cate` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_arquivo` (`cd_tipo`);
+
+--
+-- Limitadores para a tabela `comentario`
+--
+ALTER TABLE `comentario`
+  ADD CONSTRAINT `fk_comp_per` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`cd_perfil`),
+  ADD CONSTRAINT `fk_comp_post` FOREIGN KEY (`id_post`) REFERENCES `post` (`cd_post`);
+
+--
+-- Limitadores para a tabela `eventos`
+--
+ALTER TABLE `eventos`
+  ADD CONSTRAINT `fk_eve_cate` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_eventos` (`cd_categoria`);
+
+--
+-- Limitadores para a tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD CONSTRAINT `fk_per_niv` FOREIGN KEY (`id_nivel`) REFERENCES `nivel_acesso` (`cd_nivel`);
+
+--
+-- Limitadores para a tabela `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `fk_post_cate` FOREIGN KEY (`id_categoria`) REFERENCES `categoria_arquivo` (`cd_categoria`),
+  ADD CONSTRAINT `fk_post_per` FOREIGN KEY (`id_perfil`) REFERENCES `perfil` (`cd_perfil`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

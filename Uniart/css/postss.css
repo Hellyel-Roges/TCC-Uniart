@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap");
+
+textarea{
+  outline: none !important; 
+  box-shadow: none !important;
+}
+
+.publicacao{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.publicacao-imagem{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.publicacao-video{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.publicacao-audio{
+  justify-content: center;
+  display: flex;
+  margin-bottom: 5rem;
+}
+
+.card{
+  justify-content: center;
+  width: 40rem;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.6);
+  border-radius: 0.75rem;
+  padding: 20px;
+  text-align: left;
+}
+
+.card-header {
+  width: 100%;
+  height: 30rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-header video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card-header audio {
+  width: 100%;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.card-content span {
+  background-color: #A020F0;
+  color: #fff;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 0.5rem 0.7rem;
+  border-radius: 1rem;
+}
+
+.card-content .title {
+  margin: 1rem 0 0.75rem 0;
+  text-decoration: none;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: bold;
+  width: 100%;
+}
+
+.card-content p {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.card-footer img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card-footer .author {
+  flex: 1;
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.author p {
+  font-weight: 700;
+  font-size: 14px;
+  width: 100%;
+}
+
+.author small {
+  font-size: 12px;
+  width: 100%;
+}
