@@ -1,3 +1,4 @@
+// ESTA É A PAGINA PRINCIPAL DO SITE
 <?php
 session_start();
 require_once('php/conecta.php');
